@@ -1,0 +1,62 @@
+@startuml
+
+package v000 {
+    class GestorDocumentos {
+        -documentos: List<Documento>
+        +GestorDocumentos()
+        +agregarDocumento(doc: Documento): void
+        +mostrarDocumentos(): void
+        +buscarPorAutor(autor: String): List<Documento>
+        +buscarPorPalabraClave(palabraClave: String): List<Documento>
+        +eliminarDocumento(titulo: String): boolean
+        +buscarPorTitulo(titulo: String): List<Documento>
+        +actualizarLibroPorTitulo(tituloAntiguo: String, libroActualizado: Libro): boolean
+    }
+
+    abstract class Documento {
+        -titulo: String
+        -autores: List<String>
+        -anioPublicacion: int
+        -tipo: String
+        -palabrasClave: List<String>
+        +Documento(titulo: String, autores: List<String>, anioPublicacion: int, tipo: String, palabrasClave: List<String>)
+        +getTitulo(): String
+        +getAutores(): List<String>
+        +getAnioPublicacion(): int
+        +getTipo(): String
+        +getPalabrasClave(): List<String>
+        +setTitulo(titulo: String): void
+        +setAutores(autores: List<String>): void
+        +setAnioPublicacion(anioPublicacion: int): void
+        +setTipo(tipo: String): void
+        +setPalabrasClave(palabrasClave: List<String>): void
+        +toString(): String
+    }
+
+    class Libro {
+        +Libro(titulo: String, autores: List<String>, anioPublicacion: int, palabrasClave: List<String>)
+    }
+
+    class InterfazUsuario {
+        -gestorDocumentos: GestorDocumentos
+        -scanner: Scanner
+        +InterfazUsuario()
+        +mostrarMenuPrincipal(): void
+        +gestionarLibros(): void
+        +agregarLibro(): void
+        +mostrarTodosLosLibros(): void
+        +mostrarLibroPorTitulo(): void
+        +actualizarLibroPorTitulo(): void
+        +eliminarLibroPorTitulo(): void
+        +buscarLibros(): void
+        +buscarPorAutor(): void
+        +buscarPorPalabraClave(): void
+    }
+    
+    GestorDocumentos "1" -- "*" Documento : contains
+    Documento <|-- Libro
+    InterfazUsuario ..> GestorDocumentos : uses
+    
+}
+
+@enduml
