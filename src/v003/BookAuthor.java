@@ -1,19 +1,19 @@
 package v003;
 
 class BookAuthor {
-    private int bookId;
-    private int authorId;
+    private Book book;
+    private Author author;
 
-    public BookAuthor(int bookId, int authorId) {
-        this.bookId = bookId;
-        this.authorId = authorId;
+    public BookAuthor(Book book, Author author) {
+        this.book = book;
+        this.author = author;
     }
 
     public int getBookId() {
-        return bookId;
+        return book.getId();
     }
 
     public int getAuthorId() {
-        return authorId;
+        return author.getId();
     }
 }

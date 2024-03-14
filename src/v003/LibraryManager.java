@@ -96,12 +96,12 @@ public class LibraryManager {
                 String name = scanner.nextLine();
                 Author newAuthor = new Author(authors.size() + 1, name);
                 addAuthor(newAuthor);
-                addRelation(book.getId(), newAuthor.getId());
+                addRelation(book, newAuthor);
                 System.out.println("Autor nuevo añadido y asociado al libro.");
             } else {
                 try {
                     int authorId = Integer.parseInt(input);
-                    addRelation(book.getId(), authorId);
+                    addRelation(book, authors.get(authorId));
                     System.out.println("Autor asociado al libro.");
                 } catch (NumberFormatException e) {
                     System.out.println("Entrada no válida.");
@@ -118,8 +118,8 @@ public class LibraryManager {
         authors.add(author);
     }
 
-    private void addRelation(int bookId, int authorId) {
-        relations.add(new BookAuthor(bookId, authorId));
+    private void addRelation(Book book, Author author) {
+        relations.add(new BookAuthor(book, author));
     }
 
     private List<Author> getAuthorsByBookId(int bookId) {
