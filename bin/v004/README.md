@@ -1,3 +1,3 @@
 # v004
 
-- [LibraryManager.java](LibraryManager.java) implementa una búsqueda recursiva
+- [LibraryManager.java](LibraryManager.java) implementa recursividad
