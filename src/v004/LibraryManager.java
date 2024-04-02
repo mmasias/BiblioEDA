@@ -190,13 +190,7 @@ public class LibraryManager {
         if (bookIndex < authorBooks.size()) {
             Book book = authorBooks.get(bookIndex);
             System.out.println(book);
-            System.out.println("¿Mostrar el siguiente libro? (s/n)");
-            String response = scanner.nextLine();
-            if (response.equalsIgnoreCase("s")) {
-                showBooksOfAuthorRecursively(authorId, bookIndex + 1);
-            } else {
-                System.out.println("Finalizando visualización de libros.");
-            }
+            showBooksOfAuthorRecursively(authorId, bookIndex + 1);
         } else {
             System.out.println("No hay más libros para mostrar.");
         }
